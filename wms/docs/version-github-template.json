@@ -1,0 +1,11 @@
+{
+  "version": "2.2.1",
+  "releaseDate": "2026-07-02",
+  "notes": [
+    "إصلاحات في قسم المحاسبة",
+    "تحسينات في واجهة فاتورة المبيعات",
+    "نظام إشعار التحديثات"
+  ],
+  "installerUrl": "https://github.com/GavanBadea/Y-ai/releases/download/v2.2.1/Y-ai-WMS-Setup.exe",
+  "mandatory": false
+}
