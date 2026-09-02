@@ -1,0 +1,8 @@
+{
+  "name": "y-ai-wms-installer-build",
+  "private": true,
+  "description": "Build tools for Y-ai WMS installer (obfuscation only)",
+  "devDependencies": {
+    "javascript-obfuscator": "^4.1.1"
+  }
+}
