@@ -1,0 +1,474 @@
+/* ============================================================
+   src/index.css  —  النظام البصري الكامل v2.0
+   ثلاثة ثيمات: داكن | فاتح | زجاجي (Glass)
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* حقول المبالغ — بدون أسهم الزيادة/النقصان وبدون تغيير بالعجلة */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* ── متغيرات الثيم الداكن (افتراضي) ──────────────────────── */
+:root {
+  --bg-base       : #0d1117;
+  --bg-surface    : #161b24;
+  --bg-card       : #1c2333;
+  --bg-hover      : #232d42;
+  --bg-input      : #0d1117;
+  --text-primary   : #e6edf3;
+  --text-secondary : #8b949e;
+  --text-muted     : #484f58;
+  --text-inverse   : #0d1117;
+  --accent        : #d4a012;
+  --accent-light  : #f0bb2a;
+  --accent-glow   : rgba(212,160,18,0.15);
+  --success       : #3fb950;  --success-bg : rgba(63,185,80,0.12);
+  --danger        : #f85149;  --danger-bg  : rgba(248,81,73,0.12);
+  --warning       : #e3b341;  --warning-bg : rgba(227,179,65,0.12);
+  --info          : #58a6ff;  --info-bg    : rgba(88,166,255,0.12);
+  --border        : #30363d;
+  --border-focus  : #d4a012;
+  --border-subtle : #21262d;
+  --shadow-sm     : 0 1px 3px rgba(0,0,0,.4);
+  --shadow-md     : 0 4px 12px rgba(0,0,0,.5);
+  --shadow-lg     : 0 8px 32px rgba(0,0,0,.6);
+  --shadow-glow   : 0 0 20px rgba(212,160,18,.2);
+  --glass-blur    : 0px;
+  --glass-border  : transparent;
+  --glass-text-shadow: none;
+  --font-main     : "Cairo", sans-serif;
+  --font-mono     : "IBM Plex Mono", monospace;
+  --radius-sm     : 6px;  --radius-md : 10px;
+  --radius-lg     : 16px; --radius-xl : 24px;
+  --radius-full   : 9999px;
+  --ease-ios        : cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-ios-spring : cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-ios    : 380ms;
+  --duration-ios-page: 520ms;
+  --transition      : var(--duration-ios) var(--ease-ios);
+}
+
+/* ── الثيم الفاتح ──────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg-base       : #f0f4f8;
+  --bg-surface    : #ffffff;
+  --bg-card       : #ffffff;
+  --bg-hover      : #f1f5f9;
+  --bg-input      : #f8fafc;
+  --text-primary   : #1a1f2e;
+  --text-secondary : #475569;
+  --text-muted     : #94a3b8;
+  --text-inverse   : #ffffff;
+  --accent        : #b8860b;
+  --accent-light  : #d4a012;
+  --accent-glow   : rgba(184,134,11,0.12);
+  --success       : #16a34a;  --success-bg : rgba(22,163,74,0.08);
+  --danger        : #dc2626;  --danger-bg  : rgba(220,38,38,0.08);
+  --warning       : #d97706;  --warning-bg : rgba(217,119,6,0.08);
+  --info          : #2563eb;  --info-bg    : rgba(37,99,235,0.08);
+  --border        : #e2e8f0;
+  --border-focus  : #b8860b;
+  --border-subtle : #f1f5f9;
+  --shadow-sm     : 0 1px 3px rgba(0,0,0,.06);
+  --shadow-md     : 0 4px 12px rgba(0,0,0,.09);
+  --shadow-lg     : 0 10px 30px rgba(0,0,0,.11);
+  --shadow-glow   : 0 0 20px rgba(184,134,11,.15);
+  --glass-blur    : 0px;
+  --glass-text-shadow: none;
+}
+
+/* ── الثيم الزجاجي ─────────────────────────────────────────── */
+[data-theme="glass"] {
+  --bg-base       : transparent;
+  --bg-surface    : rgba(255,255,255,0.06);
+  --bg-card       : rgba(255,255,255,0.07);
+  --bg-hover      : rgba(255,255,255,0.13);
+  --bg-input      : rgba(0,0,0,0.22);
+  --text-primary   : #eef4ff;
+  --text-secondary : #9ab0cc;
+  --text-muted     : #4a6080;
+  --text-inverse   : #0a0e1a;
+  --accent        : #90c8ff;
+  --accent-light  : #b8daff;
+  --accent-glow   : rgba(144,200,255,0.18);
+  --success       : #4ade80;  --success-bg : rgba(74,222,128,0.10);
+  --danger        : #f87171;  --danger-bg  : rgba(248,113,113,0.10);
+  --warning       : #fbbf24;  --warning-bg : rgba(251,191,36,0.10);
+  --info          : #60a5fa;  --info-bg    : rgba(96,165,250,0.10);
+  --border        : rgba(255,255,255,0.14);
+  --border-focus  : #90c8ff;
+  --border-subtle : rgba(255,255,255,0.06);
+  --shadow-sm     : 0 1px 3px rgba(0,0,0,.5);
+  --shadow-md     : 0 4px 16px rgba(0,0,0,.55);
+  --shadow-lg     : 0 8px 40px rgba(0,0,0,.65);
+  --shadow-glow   : 0 0 30px rgba(144,200,255,.22);
+  --glass-blur    : blur(18px);
+  --glass-border  : rgba(255,255,255,0.16);
+  --glass-text-shadow: 0 1px 4px rgba(0,0,0,.55), 0 0 12px rgba(0,0,0,.3);
+}
+
+/* ══ خلفيات الـ body حسب الثيم ═══════════════════════════════ */
+body                          { background: #0d1117; }
+body[data-theme="light"]      { background: linear-gradient(150deg,#f0f4f8,#e8eff8); }
+body[data-theme="glass"]      {
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(99,102,241,.3) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 75%, rgba(16,185,129,.22) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 100%,rgba(139,92,246,.2) 0%, transparent 60%),
+    linear-gradient(135deg,#060912 0%,#0f1322 45%,#090e1c 100%);
+  background-attachment: fixed;
+}
+
+/* ══ الهيدر والسايدبار في الثيم الزجاجي ═══════════════════════ */
+[data-theme="glass"] header,
+[data-theme="glass"] aside {
+  backdrop-filter         : blur(20px) saturate(170%);
+  -webkit-backdrop-filter : blur(20px) saturate(170%);
+  border-color            : var(--glass-border) !important;
+}
+
+/* ══ ظل النص في الثيم الزجاجي ════════════════════════════════ */
+[data-theme="glass"] h1,
+[data-theme="glass"] h2,
+[data-theme="glass"] h3,
+[data-theme="glass"] th,
+[data-theme="glass"] .font-bold { text-shadow: var(--glass-text-shadow); }
+
+/* ══ الجسم الأساسي ════════════════════════════════════════════ */
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family             : var(--font-main);
+  color                   : var(--text-primary);
+  line-height             : 1.6;
+  direction               : rtl;
+  -webkit-font-smoothing  : antialiased;
+  -moz-osx-font-smoothing : grayscale;
+  min-height              : 100vh;
+  transition              : background 0.45s ease;
+}
+
+#root { min-height: 100vh; }
+
+/* ══ Scrollbar ════════════════════════════════════════════════ */
+::-webkit-scrollbar       { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: var(--radius-full); }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ══ روابط وأزرار ════════════════════════════════════════════ */
+a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
+a:hover { color: var(--accent-light); }
+button { cursor: pointer; font-family: inherit; }
+table  { border-collapse: collapse; width: 100%; }
+.mono  { font-family: var(--font-mono); }
+
+/* ══ حركات عامة ══════════════════════════════════════════════ */
+@keyframes fadeIn   { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+@keyframes slideIn  { from{opacity:0;transform:translateX(16px)} to{opacity:1;transform:translateX(0)} }
+@keyframes spin     { to{transform:rotate(360deg)} }
+@keyframes pulse-glow { 0%,100%{box-shadow:0 0 0 0 var(--accent-glow)} 50%{box-shadow:0 0 0 8px transparent} }
+@keyframes online-pulse {
+  0%,100% { box-shadow:0 0 0 0 rgba(34,197,94,.6), 0 0 0 0 rgba(34,197,94,.3); }
+  50%      { box-shadow:0 0 0 4px rgba(34,197,94,0), 0 0 0 7px rgba(34,197,94,0); }
+}
+@keyframes online-glow  { 0%,100%{opacity:1} 50%{opacity:.55} }
+
+/* ── Y-ai حركات ──────────────────────────────────────── */
+@keyframes yai-pulse {
+  0%,100% { transform:scale(1);    opacity:.85; }
+  50%      { transform:scale(1.11); opacity:1;   }
+}
+@keyframes yai-spin {
+  from { transform:rotate(0deg); }
+  to   { transform:rotate(360deg); }
+}
+@keyframes yai-thinking {
+  0%,100% { transform:scale(.7); opacity:.4; }
+  50%      { transform:scale(1.2); opacity:1;  }
+}
+@keyframes yai-float {
+  0%,100% { transform:translateY(0); }
+  50%      { transform:translateY(-3px); }
+}
+
+.animate-fade-in  { animation:fadeIn  .35s ease both; }
+.animate-slide-in { animation:slideIn .3s  ease both; }
+
+/* ══ Spinner ══════════════════════════════════════════════════ */
+.spinner {
+  width:20px; height:20px;
+  border:2px solid var(--border);
+  border-top-color:var(--accent);
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+  display:inline-block;
+}
+
+/* ══ Alerts ═══════════════════════════════════════════════════ */
+.alert { padding:12px 16px; border-radius:var(--radius-md); font-size:.9rem; display:flex; align-items:center; gap:8px; border:1px solid transparent; }
+.alert-error   { background:var(--danger-bg);  border-color:var(--danger);  color:var(--danger);  }
+.alert-success { background:var(--success-bg); border-color:var(--success); color:var(--success); }
+.alert-warning { background:var(--warning-bg); border-color:var(--warning); color:var(--warning); }
+.alert-info    { background:var(--info-bg);    border-color:var(--info);    color:var(--info);    }
+
+/* ══ مبدّل الثيم الثلاثي ══════════════════════════════════════ */
+.theme-switcher {
+  display:flex; align-items:center; gap:2px;
+  background:var(--bg-card); border:1px solid var(--border);
+  border-radius:var(--radius-full); padding:3px;
+  backdrop-filter:blur(8px);
+}
+.theme-btn {
+  display:flex; align-items:center; justify-content:center; gap:5px;
+  padding:5px 12px; border-radius:var(--radius-full);
+  border:none; background:transparent;
+  color:var(--text-muted); font-size:.78rem; font-weight:600;
+  font-family:var(--font-main); cursor:pointer;
+  transition:all var(--transition); white-space:nowrap;
+}
+.theme-btn:hover { background:var(--bg-hover); color:var(--text-secondary); }
+.theme-btn.active {
+  background:var(--accent); color:#0a0a0a;
+  box-shadow:0 2px 10px var(--accent-glow);
+  font-weight:700;
+}
+[data-theme="glass"] .theme-btn.active { color:#fff; }
+
+/* ══ Y-ai أيقونة المساعد الجديدة ══════════════════════════════ */
+.yai-fab {
+  width:60px; height:60px;
+  border-radius:50%; background:transparent;
+  border:none; cursor:grab; z-index:1000;
+  padding:0; display:flex; align-items:center; justify-content:center;
+  animation: yai-float 3s ease-in-out infinite;
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,.4));
+  touch-action: none;
+}
+.yai-fab:active { cursor:grabbing; }
+.yai-fab:hover { animation:none; transform:scale(1.1); }
+.yai-fab:active { transform:scale(.95); }
+
+/* الحلقة الخارجية المنقطة */
+.yai-ring {
+  position:absolute; inset:-5px;
+  border-radius:50%;
+  border:2px dashed var(--accent);
+  opacity:.7;
+  animation:yai-pulse 2.5s ease-in-out infinite;
+}
+.yai-ring.thinking {
+  border-style:solid;
+  border-color:var(--info);
+  animation:yai-spin 1.1s linear infinite;
+}
+[data-theme="glass"] .yai-ring { border-color:var(--accent-light); }
+
+/* الدائرة الداخلية */
+.yai-core {
+  width:54px; height:54px; border-radius:50%;
+  background:var(--bg-card);
+  border:1.5px solid var(--accent);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+  box-shadow:0 4px 20px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.07);
+  transition:border-color .3s, background .3s;
+}
+[data-theme="light"] .yai-core {
+  background:rgba(255,255,255,.98);
+  box-shadow:0 4px 20px rgba(0,0,0,.1), inset 0 1px 0 rgba(255,255,255,.9);
+}
+[data-theme="glass"] .yai-core {
+  background:rgba(255,255,255,.09);
+  border-color:var(--accent-light);
+  box-shadow:0 4px 24px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+/* حرف Y */
+.yai-y {
+  font-family:var(--font-main); font-size:1.4rem; font-weight:900;
+  color:var(--accent); letter-spacing:-.02em; user-select:none;
+  line-height:1; text-shadow:0 0 14px var(--accent-glow);
+  transition:opacity .2s;
+}
+[data-theme="glass"] .yai-y {
+  color:var(--accent-light);
+  text-shadow:0 0 18px rgba(144,200,255,.6);
+}
+
+/* نقاط التفكير (تُخفى Y وتُظهر النقاط) */
+.yai-dots {
+  display:none; gap:3px; position:absolute;
+}
+.yai-dots span {
+  width:5px; height:5px; border-radius:50%;
+  background:var(--accent);
+  animation:yai-thinking .8s ease infinite;
+}
+.yai-dots span:nth-child(2) { animation-delay:.16s; }
+.yai-dots span:nth-child(3) { animation-delay:.32s; }
+
+.yai-fab.is-thinking .yai-y  { opacity:0; }
+.yai-fab.is-thinking .yai-dots { display:flex; }
+
+/* مؤشر الاتصال */
+.yai-dot {
+  position:absolute; top:3px; right:3px;
+  width:11px; height:11px; border-radius:50%;
+  border:2px solid var(--bg-card);
+  transition:background .3s, box-shadow .3s;
+}
+.yai-dot.is-online {
+  background:#22c55e !important;
+  animation:online-pulse 2s ease-in-out infinite;
+}
+.yai-dot.is-offline  { background:#ef4444 !important; }
+.yai-dot.is-checking { background:#64748b !important; animation:online-glow 1.5s ease infinite; }
+[data-theme="light"] .yai-dot { border-color:#fff; }
+[data-theme="glass"] .yai-dot { border-color:rgba(255,255,255,.15); }
+
+/* ══ بطاقات الثيم الزجاجي ════════════════════════════════════ */
+[data-theme="glass"] .glass-card,
+[data-theme="glass"] [style*="bg-card"],
+[data-theme="glass"] [class*="card"] {
+  backdrop-filter        : blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+}
+
+/* ══ حركة مرنة على نمط iOS ════════════════════════════════════ */
+@keyframes ios-page-enter {
+  0% {
+    opacity   : 0;
+    transform : translate3d(22px, 10px, 0) scale(0.975);
+    filter    : blur(6px);
+  }
+  52% {
+    opacity   : 1;
+    transform : translate3d(-5px, -2px, 0) scale(1.012);
+    filter    : blur(0);
+  }
+  76% {
+    transform : translate3d(2px, 1px, 0) scale(0.996);
+  }
+  100% {
+    opacity   : 1;
+    transform : none;
+    filter    : blur(0);
+  }
+}
+
+@keyframes ios-content-rise {
+  0% {
+    opacity   : 0;
+    transform : translate3d(0, 14px, 0) scale(0.99);
+  }
+  62% {
+    opacity   : 1;
+    transform : translate3d(0, -3px, 0) scale(1.006);
+  }
+  100% {
+    opacity   : 1;
+    transform : none;
+  }
+}
+
+/* ══ النوافذ المنبثقة — وسط الشاشة ═══════════════════════════ */
+.wms-modal-root {
+  position         : fixed;
+  inset            : 0;
+  z-index          : 1000;
+  display          : flex;
+  align-items      : center;
+  justify-content  : center;
+  padding          : 16px;
+  background       : rgba(0, 0, 0, .6);
+  backdrop-filter  : blur(3px);
+  -webkit-backdrop-filter : blur(3px);
+}
+
+.wms-modal-panel {
+  width            : min(580px, 96vw);
+  max-height       : min(92vh, calc(100dvh - 32px));
+  overflow-y       : auto;
+  background       : var(--bg-card);
+  border           : 1px solid var(--border);
+  border-radius    : var(--radius-xl);
+  padding          : 28px;
+  box-shadow       : var(--shadow-lg);
+  flex-shrink      : 0;
+}
+
+.wms-modal-header {
+  display          : flex;
+  justify-content  : space-between;
+  align-items      : center;
+  margin-bottom    : 22px;
+}
+
+.wms-modal-title {
+  font-weight      : 800;
+  font-size        : 1.05rem;
+  color            : var(--text-primary);
+  margin           : 0;
+}
+
+.wms-modal-close {
+  background       : none;
+  border           : none;
+  color            : var(--text-muted);
+  cursor           : pointer;
+  font-size        : 1.4rem;
+  line-height      : 1;
+  padding          : 0;
+}
+
+.ios-page {
+  transform-origin : center top;
+  will-change      : transform, opacity, filter;
+}
+
+.ios-page--enter {
+  animation: ios-page-enter var(--duration-ios-page) var(--ease-ios-spring) both;
+}
+
+.ios-page--enter > * {
+  animation: ios-content-rise calc(var(--duration-ios-page) * 0.88) var(--ease-ios-spring) both;
+  animation-delay: 45ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ios-page--enter,
+  .ios-page--enter > * {
+    animation : none !important;
+    opacity   : 1 !important;
+    transform : none !important;
+    filter    : none !important;
+  }
+}
+
+/* ══ انتقال سلس عند تغيير الثيم والتفاعلات ═══════════════════ */
+*, *::before, *::after {
+  transition-property        : background-color, border-color, color, box-shadow, opacity, transform;
+  transition-duration        : var(--duration-ios);
+  transition-timing-function : var(--ease-ios);
+}
+button, a, [role="button"], input, select, textarea, label {
+  transition-timing-function : var(--ease-ios-spring);
+}
+button:active, a:active, [role="button"]:active {
+  transform  : scale(0.97);
+  transition-duration : 120ms;
+}
+.spinner, .yai-ring, .yai-dots span, .yai-dot, [class*="animation"], .ios-page, .ios-page--enter, .ios-page--enter > *, .wms-modal-root, .wms-modal-panel {
+  transition:none !important;
+}
